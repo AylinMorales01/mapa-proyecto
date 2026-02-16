@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapWeb - API Google Maps</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <button class="mobile-toggle" onclick="toggleMenu()">☰ Menú</button>
+
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar">
+            <button class="close-menu" onclick="toggleMenu()">✕ Cerrar</button>
+            
+            <h1>¡Hey! Map <span>Project</span></h1>
+            <p class="subtitle">Panel de Control</p>
+
+            <div class="button-group">
+                <button onclick="centrarMapa(); closeMenuOnMobile();" class="btn-primary">
+                    Centrar Marcador
+                </button>
+                
+                <button onclick="encontrarMiUbicacion(); closeMenuOnMobile();" class="btn-primary">
+                    Mi Ubicación Real
+                </button>
+
+                <button onclick="calcularDistancia(); closeMenuOnMobile();" class="btn-secondary">
+                    Medir Distancia
+                </button>
+
+                <button onclick="volverAlOrigen(); closeMenuOnMobile();" class="btn-secondary">
+                    Volver al Origen (JSON)
+                </button>
+            </div>
+
+            <div class="info-card">
+                <small>Estado del Sistema</small>
+                <div class="status"><span class="dot"></span> Conectado a Google Maps</div>
+            </div>
+        </aside>
+
+        <main id="map"></main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
+    <script async 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1OByINyaKf02VI7Fm4-boPRbEkAqCq1Q&callback=initMap&libraries=places,geometry">
+    </script>
+</body>
+</html>
