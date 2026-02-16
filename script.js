@@ -200,3 +200,31 @@ function closeMenuOnMobile() {
         overlay.classList.remove("active");
     }
 }
+
+// --- ACTUALIZACIÓN AUTOMÁTICA CADA 2 MINUTOS ---
+
+// Esta función hace lo mismo que tu botón, pero sin mostrar alertas de SweetAlert 
+// para no interrumpir al usuario cada 2 minutos.
+function actualizacionAutomatica() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const miPos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            
+            // Movemos el marcador y centramos el mapa suavemente
+            marker.setPosition(miPos);
+            map.panTo(miPos);
+            
+            console.log("Ubicación actualizada automáticamente");
+        }, (error) => {
+            console.warn("Error en la actualización automática:", error);
+        }, {
+            enableHighAccuracy: true // Fuerza al celular a usar el GPS real
+        });
+    }
+}
+
+// Creamos el intervalo: 120,000 milisegundos = 2 minutos
+setInterval(actualizacionAutomatica, 120000);
