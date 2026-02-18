@@ -203,8 +203,7 @@ function closeMenuOnMobile() {
 
 // --- ACTUALIZACIÓN AUTOMÁTICA CADA 2 MINUTOS ---
 
-// Esta función hace lo mismo que tu botón, pero sin mostrar alertas de SweetAlert 
-// para no interrumpir al usuario cada 2 minutos.
+
 function actualizacionAutomatica() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -221,10 +220,9 @@ function actualizacionAutomatica() {
         }, (error) => {
             console.warn("Error en la actualización automática:", error);
         }, {
-            enableHighAccuracy: true // Fuerza al celular a usar el GPS real
+            enableHighAccuracy: true
         });
     }
 }
 
-// Creamos el intervalo: 120,000 milisegundos = 2 minutos
-setInterval(actualizacionAutomatica, 120000);
+setInterval(actualizacionAutomatica, 30000);
